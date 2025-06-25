@@ -16,16 +16,17 @@ import {
   ShoppingBag,
   Bell,
   Search,
-  Car,
   MapPin,
   Calendar,
-  Trophy,
   Activity,
   Zap,
   Target,
   Gamepad2,
   Music,
-  Dumbbell
+  Dumbbell,
+  Eye,
+  EyeOff,
+  ChevronDown
 } from 'lucide-react';
 
 type Car = { name: string; price: string; image: string };
@@ -35,7 +36,7 @@ type Club = {
   name: string;
   address: string;
   members: number;
-  icon: any;
+  icon: React.ComponentType<any>;
   description: string;
   upcomingGames: { title: string; date: string; time: string; players: number }[];
   pastGames: { title: string; date: string; winner: string }[];
@@ -43,11 +44,30 @@ type Club = {
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState('home');
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('signup');
   const [selectedShop, setSelectedShop] = useState<Shop | null>(null);
   const [selectedClub, setSelectedClub] = useState<Club | null>(null);
   const [activeClubTab, setActiveClubTab] = useState('about');
   const [points] = useState(2850);
+  
+  // Signup form states
+  const [signupForm, setSignupForm] = useState({
+    username: '',
+    nickname: '',
+    countryCode: '+60',
+    mobileNumber: '',
+    password: '',
+    confirmPassword: '',
+    referralCode: '86970609',
+    agreeToTerms: false
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Handle signup submission
+  const handleSignupSubmit = () => {
+    setCurrentPage('home');
+  };
 
   // Car shops data
   const carShops = [
@@ -195,7 +215,13 @@ export default function HomePage() {
     }
   ];
 
-  const TabButton = ({ id, icon: Icon, label, isActive, onClick }: any) => (
+  const TabButton = ({ id, icon: Icon, label, isActive, onClick }: {
+    id: string;
+    icon: React.ComponentType<any>;
+    label: string;
+    isActive: boolean;
+    onClick: (id: string) => void;
+  }) => (
     <button
       onClick={() => onClick(id)}
       className={`flex flex-col items-center px-4 py-2 rounded-lg transition-all ${
@@ -209,7 +235,12 @@ export default function HomePage() {
     </button>
   );
 
-  const ServiceCard = ({ icon: Icon, title, subtitle, color = "green" }: any) => (
+  const ServiceCard = ({ icon: Icon, title, subtitle, color = "green" }: {
+    icon: React.ComponentType<any>;
+    title: string;
+    subtitle: string;
+    color?: string;
+  }) => (
     <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
       <div className={`w-12 h-12 rounded-full bg-${color}-100 flex items-center justify-center mb-3`}>
         <Icon className={`text-${color}-600`} size={24} />
@@ -220,7 +251,11 @@ export default function HomePage() {
     </div>
   );
 
-  const QuickAction = ({ icon: Icon, label, onClick }: any) => (
+  const QuickAction = ({ icon: Icon, label, onClick }: {
+    icon: React.ComponentType<any>;
+    label: string;
+    onClick?: () => void;
+  }) => (
     <button 
       onClick={onClick}
       className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
@@ -232,7 +267,12 @@ export default function HomePage() {
     </button>
   );
 
-  const RecentActivity = ({ title, points, time, type }: any) => (
+  const RecentActivity = ({ title, points, time, type }: {
+    title: string;
+    points: string;
+    time: string;
+    type: 'earned' | 'spent';
+  }) => (
     <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-100">
       <div className="flex items-center space-x-3">
         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
@@ -256,7 +296,7 @@ export default function HomePage() {
     </div>
   );
 
-  const ShopCard = ({ shop, onClick }: any) => (
+  const ShopCard = ({ shop, onClick }: { shop: Shop; onClick: (shop: Shop) => void }) => (
     <button 
       onClick={() => onClick(shop)}
       className="flex items-center p-4 bg-white rounded-lg border border-gray-100 hover:shadow-md transition-shadow w-full"
@@ -279,13 +319,13 @@ export default function HomePage() {
     </button>
   );
 
-  const ClubCard = ({ club, onClick }: any) => (
+  const ClubCard = ({ club, onClick }: { club: Club; onClick: (club: Club) => void }) => (
     <button 
       onClick={() => onClick(club)}
       className="flex items-center p-4 bg-white rounded-lg border border-gray-100 hover:shadow-md transition-shadow w-full"
     >
       <div className="w-16 h-16 rounded-lg bg-green-100 flex items-center justify-center mr-4">
-        {club && <club.icon className="text-green-600" size={24} />}
+        <club.icon className="text-green-600" size={24} />
       </div>
       <div className="flex-1 text-left">
         <h3 className="font-semibold text-gray-900 mb-1">{club.name}</h3>
@@ -299,7 +339,7 @@ export default function HomePage() {
     </button>
   );
 
-  const CarCard = ({ car }: any) => (
+  const CarCard = ({ car }: { car: Car }) => (
     <div className="bg-white rounded-lg border border-gray-100 p-4 hover:shadow-md transition-shadow">
       <div className="w-full h-32 rounded-lg bg-gray-100 overflow-hidden mb-3">
         <img 
@@ -313,6 +353,153 @@ export default function HomePage() {
       <button className="w-full mt-3 bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
         Redeem with Points
       </button>
+    </div>
+  );
+
+  const renderSignUpContent = () => (
+    <div className="space-y-6 px-2">
+      <div className="text-center mb-8 mt-8">
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">Sign Up</h1>
+        <p className="text-gray-500 text-sm leading-relaxed px-4">
+          Empowering Global Commerce: Sharing Resources, Connecting Businesses, Promoting Commercial Prosperity.
+        </p>
+      </div>
+
+      <div className="text-black space-y-4">
+        {/* Username */}
+        <div>
+          <input
+            type="text"
+            placeholder="Username"
+            value={signupForm.username}
+            onChange={(e) => setSignupForm({...signupForm, username: e.target.value})}
+            className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+
+        {/* Nickname */}
+        <div>
+          <input
+            type="text"
+            placeholder="Nickname"
+            value={signupForm.nickname}
+            onChange={(e) => setSignupForm({...signupForm, nickname: e.target.value})}
+            className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+
+        {/* Mobile Number with Country Code */}
+        <div className="flex space-x-2">
+          <div className="relative">
+            <select
+              value={signupForm.countryCode}
+              onChange={(e) => setSignupForm({...signupForm, countryCode: e.target.value})}
+              className="appearance-none p-4 pr-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+            >
+              <option value="+60">+60</option>
+              <option value="+65">+65</option>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+            </select>
+            <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+          </div>
+          <input
+            type="tel"
+            placeholder="Mobile Number"
+            value={signupForm.mobileNumber}
+            onChange={(e) => setSignupForm({...signupForm, mobileNumber: e.target.value})}
+            className="flex-1 p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+
+        {/* Password */}
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            value={signupForm.password}
+            onChange={(e) => setSignupForm({...signupForm, password: e.target.value})}
+            className="w-full p-4 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+          >
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
+
+        {/* Password Requirements */}
+        <p className="text-xs text-gray-400 px-1">
+          Use 8 or more characters with a mix of letters, numbers & symbols.
+        </p>
+
+        {/* Confirm Password */}
+        <div className="relative">
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="Confirm Password"
+            value={signupForm.confirmPassword}
+            onChange={(e) => setSignupForm({...signupForm, confirmPassword: e.target.value})}
+            className="w-full p-4 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          <button
+            type="button"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+          >
+            {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
+
+        {/* Referral Code */}
+        <div>
+          <label className="block text-sm text-gray-600 mb-2">Referral Code</label>
+          <input
+            type="text"
+            value={signupForm.referralCode}
+            onChange={(e) => setSignupForm({...signupForm, referralCode: e.target.value})}
+            className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
+            readOnly
+          />
+        </div>
+
+        {/* Terms and Conditions */}
+        <div className="flex items-start space-x-3 py-2">
+          <input
+            type="checkbox"
+            id="terms"
+            checked={signupForm.agreeToTerms}
+            onChange={(e) => setSignupForm({...signupForm, agreeToTerms: e.target.checked})}
+            className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+          />
+          <label htmlFor="terms" className="text-sm text-gray-600">
+            By registering an account, I acknowledge and agree to comply with the{' '}
+            <span className="text-blue-500">Terms and Conditions</span>.
+          </label>
+        </div>
+
+        {/* hCaptcha Placeholder */}
+        <div className="flex items-center justify-center p-4 border border-gray-200 rounded-lg bg-gray-50">
+          <div className="flex items-center space-x-2">
+            <div className="w-6 h-6 border-2 border-gray-300 rounded"></div>
+            <span className="text-sm text-gray-600">I am human</span>
+            <div className="ml-8 text-xs text-gray-400">
+              <div className="text-teal-500 font-semibold">hCaptcha</div>
+              <div>Privacy - Terms</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <button 
+          onClick={handleSignupSubmit}
+          className="w-full bg-blue-500 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 transition-colors mt-6"
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 
@@ -440,7 +627,7 @@ export default function HomePage() {
           <ShopCard 
             key={shop.id} 
             shop={shop} 
-            onClick={(shop: any) => {
+            onClick={(shop: Shop) => {
               setSelectedShop(shop);
               setCurrentPage('shopDetail');
             }} 
@@ -484,7 +671,7 @@ export default function HomePage() {
       <div>
         <h4 className="text-lg font-semibold text-gray-900 mb-4">Available Cars</h4>
         <div className="grid grid-cols-2 gap-4">
-          {selectedShop?.cars.map((car: any, index: number) => (
+          {selectedShop?.cars.map((car: Car, index: number) => (
             <CarCard key={index} car={car} />
           ))}
         </div>
@@ -510,7 +697,7 @@ export default function HomePage() {
           <ClubCard 
             key={club.id} 
             club={club} 
-            onClick={(club: any) => {
+            onClick={(club: Club) => {
               setSelectedClub(club);
               setCurrentPage('clubDetail');
               setActiveClubTab('about');
@@ -597,7 +784,7 @@ export default function HomePage() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-3">Upcoming Games</h3>
             <div className="space-y-3">
-              {selectedClub?.upcomingGames.map((game: any, index: number) => (
+              {selectedClub?.upcomingGames.map((game, index: number) => (
                 <div key={index} className="bg-blue-50 rounded-lg p-4 border border-blue-200">
                   <div className="flex items-center justify-between">
                     <div>
@@ -622,7 +809,7 @@ export default function HomePage() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-3">Past Games</h3>
             <div className="space-y-3">
-              {selectedClub?.pastGames.map((game: any, index: number) => (
+              {selectedClub?.pastGames.map((game, index: number) => (
                 <div key={index} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                   <div className="flex items-center justify-between">
                     <div>
@@ -776,7 +963,10 @@ export default function HomePage() {
           { icon: CreditCard, label: "Payment Methods", color: "gray" },
           { icon: Users, label: "Invite Friends", color: "gray" },
         ].map((item, index) => (
-          <button key={index} className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-100 hover:bg-gray-50">
+          <button 
+            key={index} 
+            className="w-full flex items-center justify-between p-4 bg-white rounded-lg border border-gray-100 hover:bg-gray-50"
+          >
             <div className="flex items-center space-x-3">
               <item.icon className="text-gray-600" size={20} />
               <span className="font-medium text-gray-900">{item.label}</span>
@@ -789,6 +979,7 @@ export default function HomePage() {
   );
 
   const renderContent = () => {
+    if (currentPage === 'signup') return renderSignUpContent();
     if (currentPage === 'shop') return renderShopContent();
     if (currentPage === 'shopDetail') return renderShopDetailContent();
     if (currentPage === 'clubs') return renderClubsContent();
@@ -827,7 +1018,7 @@ export default function HomePage() {
       </div>
 
       {/* Bottom Navigation */}
-      {['home', 'shop', 'shopDetail', 'clubs', 'clubDetail'].includes(currentPage) ? (
+      {['home', 'shop', 'shopDetail', 'clubs', 'clubDetail'].includes(currentPage) && (
         <div className="bg-white border-t border-gray-200 px-4 py-2 fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md">
           <div className="flex justify-around">
             <TabButton
@@ -872,7 +1063,7 @@ export default function HomePage() {
             />
           </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }
