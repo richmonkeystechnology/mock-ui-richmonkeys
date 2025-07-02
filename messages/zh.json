@@ -1,0 +1,152 @@
+{
+  "common": {
+    "submit": "提交",
+    "next": "下一步",
+    "back": "返回",
+    "search": "搜索",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功"
+  },
+  "signup": {
+    "title": "注册",
+    "subtitle": "赋能全球贸易：资源共享，企业互联，促进商业繁荣。",
+    "username": "用户名",
+    "nickname": "昵称",
+    "mobileNumber": "手机号码",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "passwordRequirement": "使用8个或更多字符，包含字母、数字和符号的组合。",
+    "referralCode": "推荐码",
+    "agreeToTerms": "通过注册账户，我承认并同意遵守{termsLink}。",
+    "termsAndConditions": "条款和条件",
+    "iAmHuman": "我是人类",
+    "submit": "提交"
+  },
+  "home": {
+    "greeting": "早上好",
+    "subtitle": "准备好消费您的积分了吗？",
+    "pointsBalance": "积分余额",
+    "availablePoints": "可用积分",
+    "earnMore": "赚取更多",
+    "quickActions": "快速操作",
+    "shop": "商店",
+    "dine": "用餐",
+    "clubs": "俱乐部",
+    "rewards": "奖励",
+    "featuredServices": "精选服务",
+    "restaurantReservations": "餐厅预订",
+    "restaurantReservationsDesc": "在高端餐厅预订餐桌",
+    "exclusiveShopping": "专属购物",
+    "exclusiveShoppingDesc": "优质品牌积分折扣",
+    "vipClubAccess": "VIP俱乐部通行证",
+    "vipClubAccessDesc": "加入专属会员俱乐部",
+    "recentActivity": "最近活动",
+    "coffeePurchase": "咖啡购买",
+    "dailyLoginBonus": "每日登录奖励",
+    "restaurantBooking": "餐厅预订",
+    "hoursAgo": "{hours}小时前",
+    "today": "今天",
+    "yesterday": "昨天",
+    "points": "积分"
+  },
+  "shop": {
+    "title": "汽车商店",
+    "redeemWithPoints": "积分兑换",
+    "rating": "评分",
+    "reviews": "评价",
+    "availableCars": "可选车型"
+  },
+  "clubs": {
+    "title": "俱乐部",
+    "members": "成员",
+    "invited": "已邀请",
+    "about": "关于",
+    "activities": "活动",
+    "membersTab": "成员",
+    "aboutThisClub": "关于此俱乐部",
+    "upcomingGames": "即将到来的游戏",
+    "pastGames": "过往游戏",
+    "players": "玩家",
+    "join": "加入",
+    "winner": "获胜者：",
+    "clubPresident": "俱乐部主席",
+    "tournamentDirector": "锦标赛总监",
+    "member": "成员",
+    "activitiesCount": "活动数"
+  },
+  "wallet": {
+    "title": "我的钱包",
+    "subtitle": "管理您的积分和交易",
+    "totalPoints": "总积分",
+    "earnedThisMonth": "本月获得",
+    "spentThisMonth": "本月消费",
+    "transferPoints": "转移积分",
+    "transactionHistory": "交易记录"
+  },
+  "messages": {
+    "title": "消息",
+    "subtitle": "及时获取通知更新",
+    "welcomeBonus": "欢迎奖励！",
+    "welcomeBonusMessage": "您获得了100积分奖励！",
+    "reservationConfirmed": "预订确认",
+    "reservationConfirmedMessage": "您在樱花餐厅的餐桌已确认",
+    "newRewardsAvailable": "新奖励可用",
+    "newRewardsMessage": "查看我们目录中的最新奖励",
+    "daysAgo": "{days}天前"
+  },
+  "profile": {
+    "title": "个人资料",
+    "premiumMember": "高级会员",
+    "vipStatus": "VIP状态",
+    "totalPoints": "总积分",
+    "bookings": "预订",
+    "clubs": "俱乐部",
+    "editProfile": "编辑个人资料",
+    "notifications": "通知",
+    "rewardsHistory": "奖励历史",
+    "paymentMethods": "支付方式",
+    "inviteFriends": "邀请朋友"
+  },
+  "navigation": {
+    "home": "首页",
+    "wallet": "钱包",
+    "messages": "消息",
+    "profile": "个人资料"
+  },
+  "cars": {
+    "bydSeal": "比亚迪海豹",
+    "bydTang": "比亚迪唐",
+    "bydHan": "比亚迪汉",
+    "bydAtto3": "比亚迪元PLUS",
+    "gwmTank500": "长城坦克500",
+    "gwmHavalH6": "哈弗H6",
+    "gwmOraGoodCat": "欧拉好猫",
+    "gwmPoer": "长城炮",
+    "toyotaCamry": "丰田凯美瑞",
+    "toyotaRav4": "丰田RAV4",
+    "toyotaPrius": "丰田普锐斯",
+    "toyotaCorolla": "丰田卡罗拉"
+  },
+  "shops": {
+    "bydMotors": "比亚迪汽车",
+    "bydDescription": "领先的电动汽车制造商，提供创新和环保的交通解决方案，拥有尖端技术。",
+    "gwmMotors": "长城汽车",
+    "gwmDescription": "长城汽车提供可靠的SUV和皮卡车，具有强劲的性能和先进的安全功能。",
+    "toyotaMotors": "丰田汽车",
+    "toyotaDescription": "世界知名的汽车制造商，以可靠性、质量和创新的混合动力技术解决方案而闻名。"
+  },
+  "clubNames": {
+    "eliteTennisClub": "精英网球俱乐部",
+    "gamingLegends": "游戏传奇",
+    "musicHarmonyClub": "音乐和谐俱乐部",
+    "fitnessWarriors": "健身勇士",
+    "businessNetworkPro": "商业网络专家",
+    "adventureSeekers": "冒险探索者"
+  },
+  "language": {
+    "english": "English",
+    "chinese": "中文",
+    "switchLanguage": "切换语言"
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "common": {
+    "submit": "Submit",
+    "next": "Next",
+    "back": "Back",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "subtitle": "Empowering Global Commerce: Sharing Resources, Connecting Businesses, Promoting Commercial Prosperity.",
+    "username": "Username",
+    "nickname": "Nickname",
+    "mobileNumber": "Mobile Number",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "passwordRequirement": "Use 8 or more characters with a mix of letters, numbers & symbols.",
+    "referralCode": "Referral Code",
+    "agreeToTerms": "By registering an account, I acknowledge and agree to comply with the {termsLink}.",
+    "termsAndConditions": "Terms and Conditions",
+    "iAmHuman": "I am human",
+    "submit": "Submit"
+  },
+  "home": {
+    "greeting": "Good morning",
+    "subtitle": "Ready to spend your points?",
+    "pointsBalance": "Points Balance",
+    "availablePoints": "Available Points",
+    "earnMore": "Earn More",
+    "quickActions": "Quick Actions",
+    "shop": "Shop",
+    "dine": "Dine",
+    "clubs": "Clubs",
+    "rewards": "Rewards",
+    "featuredServices": "Featured Services",
+    "restaurantReservations": "Restaurant Reservations",
+    "restaurantReservationsDesc": "Book tables at premium restaurants",
+    "exclusiveShopping": "Exclusive Shopping",
+    "exclusiveShoppingDesc": "Premium brands with points discount",
+    "vipClubAccess": "VIP Club Access",
+    "vipClubAccessDesc": "Join exclusive member clubs",
+    "recentActivity": "Recent Activity",
+    "coffeePurchase": "Coffee Purchase",
+    "dailyLoginBonus": "Daily Login Bonus",
+    "restaurantBooking": "Restaurant Booking",
+    "hoursAgo": "{hours} hours ago",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "points": "pts"
+  },
+  "shop": {
+    "title": "Car Shops",
+    "redeemWithPoints": "Redeem with Points",
+    "rating": "Rating",
+    "reviews": "reviews",
+    "availableCars": "Available Cars"
+  },
+  "clubs": {
+    "title": "Clubs",
+    "members": "Members",
+    "invited": "INVITED",
+    "about": "ABOUT",
+    "activities": "ACTIVITIES",
+    "membersTab": "MEMBERS",
+    "aboutThisClub": "About This Club",
+    "upcomingGames": "Upcoming Games",
+    "pastGames": "Past Games",
+    "players": "Players",
+    "join": "Join",
+    "winner": "Winner:",
+    "clubPresident": "Club President",
+    "tournamentDirector": "Tournament Director",
+    "member": "Member",
+    "activitiesCount": "Activities"
+  },
+  "wallet": {
+    "title": "My Wallet",
+    "subtitle": "Manage your points and transactions",
+    "totalPoints": "Total Points",
+    "earnedThisMonth": "Earned This Month",
+    "spentThisMonth": "Spent This Month",
+    "transferPoints": "Transfer Points",
+    "transactionHistory": "Transaction History"
+  },
+  "messages": {
+    "title": "Messages",
+    "subtitle": "Stay updated with notifications",
+    "welcomeBonus": "Welcome Bonus!",
+    "welcomeBonusMessage": "You've earned 100 bonus points!",
+    "reservationConfirmed": "Reservation Confirmed",
+    "reservationConfirmedMessage": "Your table at Sakura Restaurant is confirmed",
+    "newRewardsAvailable": "New Rewards Available",
+    "newRewardsMessage": "Check out the latest rewards in our catalog",
+    "daysAgo": "{days}d ago"
+  },
+  "profile": {
+    "title": "Profile",
+    "premiumMember": "Premium Member",
+    "vipStatus": "VIP Status",
+    "totalPoints": "Total Points",
+    "bookings": "Bookings",
+    "clubs": "Clubs",
+    "editProfile": "Edit Profile",
+    "notifications": "Notifications",
+    "rewardsHistory": "Rewards History",
+    "paymentMethods": "Payment Methods",
+    "inviteFriends": "Invite Friends"
+  },
+  "navigation": {
+    "home": "Home",
+    "wallet": "Wallet",
+    "messages": "Messages",
+    "profile": "Profile"
+  },
+  "cars": {
+    "bydSeal": "BYD Seal",
+    "bydTang": "BYD Tang",
+    "bydHan": "BYD Han",
+    "bydAtto3": "BYD Atto 3",
+    "gwmTank500": "GWM Tank 500",
+    "gwmHavalH6": "GWM Haval H6",
+    "gwmOraGoodCat": "GWM Ora Good Cat",
+    "gwmPoer": "GWM Poer",
+    "toyotaCamry": "Toyota Camry",
+    "toyotaRav4": "Toyota RAV4",
+    "toyotaPrius": "Toyota Prius",
+    "toyotaCorolla": "Toyota Corolla"
+  },
+  "shops": {
+    "bydMotors": "BYD Motors",
+    "bydDescription": "Leading electric vehicle manufacturer offering innovative and eco-friendly transportation solutions with cutting-edge technology.",
+    "gwmMotors": "GWM Motors",
+    "gwmDescription": "Great Wall Motors offering reliable SUVs and pickup trucks with robust performance and advanced safety features.",
+    "toyotaMotors": "Toyota Motors",
+    "toyotaDescription": "World-renowned automotive manufacturer known for reliability, quality, and innovative hybrid technology solutions."
+  },
+  "clubNames": {
+    "eliteTennisClub": "Elite Tennis Club",
+    "gamingLegends": "Gaming Legends",
+    "musicHarmonyClub": "Music Harmony Club",
+    "fitnessWarriors": "Fitness Warriors",
+    "businessNetworkPro": "Business Network Pro",
+    "adventureSeekers": "Adventure Seekers"
+  },
+  "language": {
+    "english": "English",
+    "chinese": "中文",
+    "switchLanguage": "Switch Language"
+  }
+}

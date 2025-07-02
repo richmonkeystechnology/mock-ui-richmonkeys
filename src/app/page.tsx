@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useState } from 'react';
+import { useTranslations } from '../components/ClientTranslationProvider';
+import LanguageToggle from '../components/LanguageToggle';
 import { 
   Home, 
   CreditCard, 
@@ -43,6 +45,7 @@ type Club = {
 };
 
 export default function HomePage() {
+  const { locale, setLocale, t } = useTranslations();
   const [activeTab, setActiveTab] = useState('home');
   const [currentPage, setCurrentPage] = useState('signup');
   const [selectedShop, setSelectedShop] = useState<Shop | null>(null);
@@ -73,44 +76,44 @@ export default function HomePage() {
   const carShops = [
     {
       id: 1,
-      name: "BYD Motors",
+      name: t('shops.bydMotors'),
       image: "/byd-logo.jpeg",
       rating: 4.8,
       reviews: 156,
-      description: "Leading electric vehicle manufacturer offering innovative and eco-friendly transportation solutions with cutting-edge technology.",
+      description: t('shops.bydDescription'),
       cars: [
-        { name: "BYD Seal", price: "850,000 pts", image: "/byd-01.jpeg" },
-        { name: "BYD Tang", price: "720,000 pts", image: "/byd-02.webp" },
-        { name: "BYD Han", price: "680,000 pts", image: "/byd-01.jpeg" },
-        { name: "BYD Atto 3", price: "650,000 pts", image: "/byd-02.webp" }
+        { name: t('cars.bydSeal'), price: `850,000 ${t('home.points')}`, image: "/byd-01.jpeg" },
+        { name: t('cars.bydTang'), price: `720,000 ${t('home.points')}`, image: "/byd-02.webp" },
+        { name: t('cars.bydHan'), price: `680,000 ${t('home.points')}`, image: "/byd-01.jpeg" },
+        { name: t('cars.bydAtto3'), price: `650,000 ${t('home.points')}`, image: "/byd-02.webp" }
       ]
     },
     {
       id: 2,
-      name: "GWM Motors",
+      name: t('shops.gwmMotors'),
       image: "/gwm-logo.png",
       rating: 4.5,
       reviews: 89,
-      description: "Great Wall Motors offering reliable SUVs and pickup trucks with robust performance and advanced safety features.",
+      description: t('shops.gwmDescription'),
       cars: [
-        { name: "GWM Tank 500", price: "920,000 pts", image: "/gwm-01.jpg" },
-        { name: "GWM Haval H6", price: "580,000 pts", image: "/gwm-02.webp" },
-        { name: "GWM Ora Good Cat", price: "450,000 pts", image: "/gwm-01.jpg" },
-        { name: "GWM Poer", price: "720,000 pts", image: "/gwm-02.webp" }
+        { name: t('cars.gwmTank500'), price: `920,000 ${t('home.points')}`, image: "/gwm-01.jpg" },
+        { name: t('cars.gwmHavalH6'), price: `580,000 ${t('home.points')}`, image: "/gwm-02.webp" },
+        { name: t('cars.gwmOraGoodCat'), price: `450,000 ${t('home.points')}`, image: "/gwm-01.jpg" },
+        { name: t('cars.gwmPoer'), price: `720,000 ${t('home.points')}`, image: "/gwm-02.webp" }
       ]
     },
     {
       id: 3,
-      name: "Toyota Motors",
+      name: t('shops.toyotaMotors'),
       image: "/toyota-logo.png",
       rating: 4.9,
       reviews: 234,
-      description: "World-renowned automotive manufacturer known for reliability, quality, and innovative hybrid technology solutions.",
+      description: t('shops.toyotaDescription'),
       cars: [
-        { name: "Toyota Camry", price: "680,000 pts", image: "/toyota-01.jpg" },
-        { name: "Toyota RAV4", price: "750,000 pts", image: "/toyota-02.jpg" },
-        { name: "Toyota Prius", price: "580,000 pts", image: "/toyota-03.avif" },
-        { name: "Toyota Corolla", price: "520,000 pts", image: "/toyota-01.jpg" }
+        { name: t('cars.toyotaCamry'), price: `680,000 ${t('home.points')}`, image: "/toyota-01.jpg" },
+        { name: t('cars.toyotaRav4'), price: `750,000 ${t('home.points')}`, image: "/toyota-02.jpg" },
+        { name: t('cars.toyotaPrius'), price: `580,000 ${t('home.points')}`, image: "/toyota-03.avif" },
+        { name: t('cars.toyotaCorolla'), price: `520,000 ${t('home.points')}`, image: "/toyota-01.jpg" }
       ]
     }
   ];
@@ -119,7 +122,7 @@ export default function HomePage() {
   const clubs = [
     {
       id: 1,
-      name: "Elite Tennis Club",
+      name: t('clubNames.eliteTennisClub'),
       address: "Marina Bay, Singapore",
       members: 124,
       icon: Activity,
@@ -135,7 +138,7 @@ export default function HomePage() {
     },
     {
       id: 2,
-      name: "Gaming Legends",
+      name: t('clubNames.gamingLegends'),
       address: "Orchard Road, Singapore",
       members: 89,
       icon: Gamepad2,
@@ -151,7 +154,7 @@ export default function HomePage() {
     },
     {
       id: 3,
-      name: "Music Harmony Club",
+      name: t('clubNames.musicHarmonyClub'),
       address: "Clarke Quay, Singapore",
       members: 67,
       icon: Music,
@@ -167,7 +170,7 @@ export default function HomePage() {
     },
     {
       id: 4,
-      name: "Fitness Warriors",
+      name: t('clubNames.fitnessWarriors'),
       address: "Raffles Place, Singapore",
       members: 156,
       icon: Dumbbell,
@@ -183,7 +186,7 @@ export default function HomePage() {
     },
     {
       id: 5,
-      name: "Business Network Pro",
+      name: t('clubNames.businessNetworkPro'),
       address: "CBD District, Singapore",
       members: 203,
       icon: Target,
@@ -199,7 +202,7 @@ export default function HomePage() {
     },
     {
       id: 6,
-      name: "Adventure Seekers",
+      name: t('clubNames.adventureSeekers'),
       address: "East Coast, Singapore",
       members: 78,
       icon: Zap,
@@ -291,7 +294,7 @@ export default function HomePage() {
       <span className={`font-semibold ${
         type === 'earned' ? 'text-green-600' : 'text-orange-600'
       }`}>
-        {type === 'earned' ? '+' : '-'}{points} pts
+        {type === 'earned' ? '+' : '-'}{points} {t('home.points')}
       </span>
     </div>
   );
@@ -333,7 +336,7 @@ export default function HomePage() {
           <MapPin size={12} className="mr-1" />
           <span>{club.address}</span>
         </div>
-        <span className="text-xs text-green-600 font-medium">{club.members} Members</span>
+        <span className="text-xs text-green-600 font-medium">{club.members} {t('clubs.members')}</span>
       </div>
       <ChevronRight className="text-gray-400" size={16} />
     </button>
@@ -351,7 +354,7 @@ export default function HomePage() {
       <h4 className="font-semibold text-gray-900 mb-1">{car.name}</h4>
       <p className="text-green-600 font-bold">{car.price}</p>
       <button className="w-full mt-3 bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
-        Redeem with Points
+        {t('shop.redeemWithPoints')}
       </button>
     </div>
   );
@@ -359,9 +362,9 @@ export default function HomePage() {
   const renderSignUpContent = () => (
     <div className="space-y-6 px-2">
       <div className="text-center mb-8 mt-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Sign Up</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">{t('signup.title')}</h1>
         <p className="text-gray-500 text-sm leading-relaxed px-4">
-          Empowering Global Commerce: Sharing Resources, Connecting Businesses, Promoting Commercial Prosperity.
+          {t('signup.subtitle')}
         </p>
       </div>
 
@@ -370,7 +373,7 @@ export default function HomePage() {
         <div>
           <input
             type="text"
-            placeholder="Username"
+            placeholder={t('signup.username')}
             value={signupForm.username}
             onChange={(e) => setSignupForm({...signupForm, username: e.target.value})}
             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -381,7 +384,7 @@ export default function HomePage() {
         <div>
           <input
             type="text"
-            placeholder="Nickname"
+            placeholder={t('signup.nickname')}
             value={signupForm.nickname}
             onChange={(e) => setSignupForm({...signupForm, nickname: e.target.value})}
             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -405,7 +408,7 @@ export default function HomePage() {
           </div>
           <input
             type="tel"
-            placeholder="Mobile Number"
+            placeholder={t('signup.mobileNumber')}
             value={signupForm.mobileNumber}
             onChange={(e) => setSignupForm({...signupForm, mobileNumber: e.target.value})}
             className="flex-1 p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -416,7 +419,7 @@ export default function HomePage() {
         <div className="relative">
           <input
             type={showPassword ? "text" : "password"}
-            placeholder="Password"
+            placeholder={t('signup.password')}
             value={signupForm.password}
             onChange={(e) => setSignupForm({...signupForm, password: e.target.value})}
             className="w-full p-4 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -432,14 +435,14 @@ export default function HomePage() {
 
         {/* Password Requirements */}
         <p className="text-xs text-gray-400 px-1">
-          Use 8 or more characters with a mix of letters, numbers & symbols.
+          {t('signup.passwordRequirement')}
         </p>
 
         {/* Confirm Password */}
         <div className="relative">
           <input
             type={showConfirmPassword ? "text" : "password"}
-            placeholder="Confirm Password"
+            placeholder={t('signup.confirmPassword')}
             value={signupForm.confirmPassword}
             onChange={(e) => setSignupForm({...signupForm, confirmPassword: e.target.value})}
             className="w-full p-4 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -455,7 +458,7 @@ export default function HomePage() {
 
         {/* Referral Code */}
         <div>
-          <label className="block text-sm text-gray-600 mb-2">Referral Code</label>
+          <label className="block text-sm text-gray-600 mb-2">{t('signup.referralCode')}</label>
           <input
             type="text"
             value={signupForm.referralCode}
@@ -475,8 +478,7 @@ export default function HomePage() {
             className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
           />
           <label htmlFor="terms" className="text-sm text-gray-600">
-            By registering an account, I acknowledge and agree to comply with the{' '}
-            <span className="text-blue-500">Terms and Conditions</span>.
+            {t('signup.agreeToTerms', { termsLink: t('signup.termsAndConditions') })}
           </label>
         </div>
 
@@ -484,7 +486,7 @@ export default function HomePage() {
         <div className="flex items-center justify-center p-4 border border-gray-200 rounded-lg bg-gray-50">
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 border-2 border-gray-300 rounded"></div>
-            <span className="text-sm text-gray-600">I am human</span>
+            <span className="text-sm text-gray-600">{t('signup.iAmHuman')}</span>
             <div className="ml-8 text-xs text-gray-400">
               <div className="text-teal-500 font-semibold">hCaptcha</div>
               <div>Privacy - Terms</div>
@@ -497,7 +499,7 @@ export default function HomePage() {
           onClick={handleSignupSubmit}
           className="w-full bg-blue-500 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 transition-colors mt-6"
         >
-          Submit
+          {t('signup.submit')}
         </button>
       </div>
     </div>
@@ -508,8 +510,8 @@ export default function HomePage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Good morning</h1>
-          <p className="text-gray-600">Ready to spend your points?</p>
+          <h1 className="text-2xl font-bold text-gray-900">{t('home.greeting')}</h1>
+          <p className="text-gray-600">{t('home.subtitle')}</p>
         </div>
         <div className="flex space-x-2">
           <button className="p-2 rounded-full bg-gray-100">
@@ -519,64 +521,65 @@ export default function HomePage() {
             <Bell size={20} className="text-gray-600" />
             <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
           </button>
+          <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
         </div>
       </div>
 
       {/* Points Balance Card */}
       <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-2xl p-6 text-white">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold">Points Balance</h2>
+          <h2 className="text-lg font-semibold">{t('home.pointsBalance')}</h2>
           <Gift size={24} />
         </div>
         <div className="flex items-center justify-between">
           <div>
             <p className="text-3xl font-bold">{points.toLocaleString()}</p>
-            <p className="text-green-100">Available Points</p>
+            <p className="text-green-100">{t('home.availablePoints')}</p>
           </div>
           <button className="bg-white bg-opacity-20 rounded-lg px-4 py-2 text-sm font-medium">
-            Earn More
+            {t('home.earnMore')}
           </button>
         </div>
       </div>
 
       {/* Quick Actions */}
       <div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('home.quickActions')}</h3>
         <div className="grid grid-cols-4 gap-3">
           <QuickAction 
             icon={ShoppingBag} 
-            label="Shop" 
+            label={t('home.shop')} 
             onClick={() => setCurrentPage('shop')}
           />
-          <QuickAction icon={Utensils} label="Dine" />
+          <QuickAction icon={Utensils} label={t('home.dine')} />
           <QuickAction 
             icon={Users} 
-            label="Clubs" 
+            label={t('home.clubs')} 
             onClick={() => setCurrentPage('clubs')}
           />
-          <QuickAction icon={Gift} label="Rewards" />
+          <QuickAction icon={Gift} label={t('home.rewards')} />
         </div>
       </div>
 
       {/* Featured Services */}
       <div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Featured Services</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('home.featuredServices')}</h3>
         <div className="space-y-3">
           <ServiceCard 
             icon={Utensils}
-            title="Restaurant Reservations"
-            subtitle="Book tables at premium restaurants"
+            title={t('home.restaurantReservations')}
+            subtitle={t('home.restaurantReservationsDesc')}
           />
           <ServiceCard 
             icon={ShoppingBag}
-            title="Exclusive Shopping"
-            subtitle="Premium brands with points discount"
+            title={t('home.exclusiveShopping')}
+            subtitle={t('home.exclusiveShoppingDesc')}
             color="purple"
           />
           <ServiceCard 
             icon={Users}
-            title="VIP Club Access"
-            subtitle="Join exclusive member clubs"
+            title={t('home.vipClubAccess')}
+            subtitle={t('home.vipClubAccessDesc')}
             color="blue"
           />
         </div>
@@ -584,24 +587,24 @@ export default function HomePage() {
 
       {/* Recent Activity */}
       <div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('home.recentActivity')}</h3>
         <div className="space-y-3">
           <RecentActivity 
-            title="Coffee Purchase"
+            title={t('home.coffeePurchase')}
             points="150"
-            time="2 hours ago"
+            time={t('home.hoursAgo', { hours: '2' })}
             type="spent"
           />
           <RecentActivity 
-            title="Daily Login Bonus"
+            title={t('home.dailyLoginBonus')}
             points="50"
-            time="Today"
+            time={t('home.today')}
             type="earned"
           />
           <RecentActivity 
-            title="Restaurant Booking"
+            title={t('home.restaurantBooking')}
             points="300"
-            time="Yesterday"
+            time={t('home.yesterday')}
             type="spent"
           />
         </div>
@@ -618,7 +621,7 @@ export default function HomePage() {
         >
           <ArrowLeft size={20} className="text-gray-600" />
         </button>
-        <h2 className="text-xl font-bold text-gray-900">Car Shops</h2>
+        <h2 className="text-xl font-bold text-gray-900">{t('shop.title')}</h2>
         <div className="w-10"></div>
       </div>
 
@@ -663,13 +666,13 @@ export default function HomePage() {
         <p className="text-gray-600 mb-4">{selectedShop?.description}</p>
         <div className="flex items-center justify-center">
           <Star className="text-yellow-400 fill-current" size={16} />
-          <span className="text-sm text-gray-600 ml-1">{selectedShop?.rating} ({selectedShop?.reviews}+ reviews)</span>
+          <span className="text-sm text-gray-600 ml-1">{selectedShop?.rating} ({selectedShop?.reviews}+ {t('shop.reviews')})</span>
         </div>
       </div>
 
       {/* Cars Grid */}
       <div>
-        <h4 className="text-lg font-semibold text-gray-900 mb-4">Available Cars</h4>
+        <h4 className="text-lg font-semibold text-gray-900 mb-4">{t('shop.availableCars')}</h4>
         <div className="grid grid-cols-2 gap-4">
           {selectedShop?.cars.map((car: Car, index: number) => (
             <CarCard key={index} car={car} />
@@ -688,7 +691,7 @@ export default function HomePage() {
         >
           <ArrowLeft size={20} className="text-gray-600" />
         </button>
-        <h2 className="text-xl font-bold text-gray-900">Clubs</h2>
+        <h2 className="text-xl font-bold text-gray-900">{t('clubs.title')}</h2>
         <div className="w-10"></div>
       </div>
 
@@ -719,7 +722,7 @@ export default function HomePage() {
           >
             <ArrowLeft size={20} className="text-white" />
           </button>
-          <span className="text-sm font-medium">INVITED</span>
+          <span className="text-sm font-medium">{t('clubs.invited')}</span>
         </div>
         
         <div className="flex items-center space-x-4">
@@ -732,7 +735,7 @@ export default function HomePage() {
               <MapPin size={12} className="mr-1" />
               {selectedClub?.address}
             </p>
-            <p className="text-green-100 text-sm">{selectedClub?.members} Members</p>
+            <p className="text-green-100 text-sm">{selectedClub?.members} {t('clubs.members')}</p>
           </div>
         </div>
       </div>
@@ -747,7 +750,7 @@ export default function HomePage() {
               : 'text-gray-600'
           }`}
         >
-          ABOUT
+          {t('clubs.about')}
         </button>
         <button
           onClick={() => setActiveClubTab('activities')}
@@ -757,7 +760,7 @@ export default function HomePage() {
               : 'text-gray-600'
           }`}
         >
-          ACTIVITIES
+          {t('clubs.activities')}
         </button>
         <button
           onClick={() => setActiveClubTab('members')}
@@ -767,14 +770,14 @@ export default function HomePage() {
               : 'text-gray-600'
           }`}
         >
-          MEMBERS
+          {t('clubs.membersTab')}
         </button>
       </div>
 
       {/* Tab Content */}
       {activeClubTab === 'about' && (
         <div className="bg-white rounded-lg p-6 border border-gray-100">
-          <h3 className="font-semibold text-gray-900 mb-3">About This Club</h3>
+          <h3 className="font-semibold text-gray-900 mb-3">{t('clubs.aboutThisClub')}</h3>
           <p className="text-gray-600 leading-relaxed">{selectedClub?.description}</p>
         </div>
       )}
@@ -782,7 +785,7 @@ export default function HomePage() {
       {activeClubTab === 'activities' && (
         <div className="space-y-4">
           <div>
-            <h3 className="font-semibold text-gray-900 mb-3">Upcoming Games</h3>
+            <h3 className="font-semibold text-gray-900 mb-3">{t('clubs.upcomingGames')}</h3>
             <div className="space-y-3">
               {selectedClub?.upcomingGames.map((game, index: number) => (
                 <div key={index} className="bg-blue-50 rounded-lg p-4 border border-blue-200">
@@ -795,9 +798,9 @@ export default function HomePage() {
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm text-blue-600">{game.players} Players</p>
+                      <p className="text-sm text-blue-600">{game.players} {t('clubs.players')}</p>
                       <button className="text-xs bg-blue-600 text-white px-3 py-1 rounded-full mt-1">
-                        Join
+                        {t('clubs.join')}
                       </button>
                     </div>
                   </div>
@@ -807,7 +810,7 @@ export default function HomePage() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-gray-900 mb-3">Past Games</h3>
+            <h3 className="font-semibold text-gray-900 mb-3">{t('clubs.pastGames')}</h3>
             <div className="space-y-3">
               {selectedClub?.pastGames.map((game, index: number) => (
                 <div key={index} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
@@ -817,7 +820,7 @@ export default function HomePage() {
                       <p className="text-sm text-gray-600">{game.date}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm text-gray-600">Winner:</p>
+                      <p className="text-sm text-gray-600">{t('clubs.winner')}</p>
                       <p className="font-semibold text-gray-900">{game.winner}</p>
                     </div>
                   </div>
@@ -831,11 +834,11 @@ export default function HomePage() {
       {activeClubTab === 'members' && (
         <div className="space-y-3">
           {[
-            { name: "Sarah Chen", role: "Club President", activities: 15 },
-            { name: "Michael Wong", role: "Tournament Director", activities: 12 },
-            { name: "Lisa Kumar", role: "Member", activities: 8 },
-            { name: "David Tan", role: "Member", activities: 6 },
-            { name: "Emma Rodriguez", role: "Member", activities: 4 }
+            { name: "Sarah Chen", role: t('clubs.clubPresident'), activities: 15 },
+            { name: "Michael Wong", role: t('clubs.tournamentDirector'), activities: 12 },
+            { name: "Lisa Kumar", role: t('clubs.member'), activities: 8 },
+            { name: "David Tan", role: t('clubs.member'), activities: 6 },
+            { name: "Emma Rodriguez", role: t('clubs.member'), activities: 4 }
           ].map((member, index) => (
             <div key={index} className="flex items-center justify-between p-4 bg-white rounded-lg border border-gray-100">
               <div className="flex items-center space-x-3">
@@ -848,7 +851,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-sm text-green-600">{member.activities} Activities</p>
+                <p className="text-sm text-green-600">{member.activities} {t('clubs.activitiesCount')}</p>
               </div>
             </div>
           ))}
@@ -860,25 +863,25 @@ export default function HomePage() {
   const renderWalletContent = () => (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">My Wallet</h2>
-        <p className="text-gray-600">Manage your points and transactions</p>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{t('wallet.title')}</h2>
+        <p className="text-gray-600">{t('wallet.subtitle')}</p>
       </div>
 
       {/* Points Overview */}
       <div className="bg-white rounded-2xl p-6 border border-gray-100">
         <div className="text-center mb-6">
-          <p className="text-sm text-gray-600 mb-2">Total Points</p>
+          <p className="text-sm text-gray-600 mb-2">{t('wallet.totalPoints')}</p>
           <p className="text-4xl font-bold text-green-600">{points.toLocaleString()}</p>
         </div>
         
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center p-4 bg-green-50 rounded-lg">
             <p className="text-2xl font-bold text-green-600">1,200</p>
-            <p className="text-sm text-gray-600">Earned This Month</p>
+            <p className="text-sm text-gray-600">{t('wallet.earnedThisMonth')}</p>
           </div>
           <div className="text-center p-4 bg-orange-50 rounded-lg">
             <p className="text-2xl font-bold text-orange-600">800</p>
-            <p className="text-sm text-gray-600">Spent This Month</p>
+            <p className="text-sm text-gray-600">{t('wallet.spentThisMonth')}</p>
           </div>
         </div>
       </div>
@@ -886,10 +889,10 @@ export default function HomePage() {
       {/* Action Buttons */}
       <div className="grid grid-cols-2 gap-4">
         <button className="bg-green-600 text-white p-4 rounded-xl font-semibold">
-          Transfer Points
+          {t('wallet.transferPoints')}
         </button>
         <button className="bg-gray-100 text-gray-700 p-4 rounded-xl font-semibold">
-          Transaction History
+          {t('wallet.transactionHistory')}
         </button>
       </div>
     </div>
@@ -898,15 +901,15 @@ export default function HomePage() {
   const renderMessagesContent = () => (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Messages</h2>
-        <p className="text-gray-600">Stay updated with notifications</p>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{t('messages.title')}</h2>
+        <p className="text-gray-600">{t('messages.subtitle')}</p>
       </div>
 
       <div className="space-y-4">
         {[
-          { title: "Welcome Bonus!", message: "You've earned 100 bonus points!", time: "2h ago", unread: true },
-          { title: "Reservation Confirmed", message: "Your table at Sakura Restaurant is confirmed", time: "1d ago", unread: false },
-          { title: "New Rewards Available", message: "Check out the latest rewards in our catalog", time: "2d ago", unread: false },
+          { title: t('messages.welcomeBonus'), message: t('messages.welcomeBonusMessage'), time: t('home.hoursAgo', { hours: '2' }), unread: true },
+          { title: t('messages.reservationConfirmed'), message: t('messages.reservationConfirmedMessage'), time: t('messages.daysAgo', { days: '1' }), unread: false },
+          { title: t('messages.newRewardsAvailable'), message: t('messages.newRewardsMessage'), time: t('messages.daysAgo', { days: '2' }), unread: false },
         ].map((item, index) => (
           <div key={index} className={`p-4 rounded-lg border ${item.unread ? 'bg-green-50 border-green-200' : 'bg-white border-gray-200'}`}>
             <div className="flex justify-between items-start">
@@ -931,10 +934,10 @@ export default function HomePage() {
           <User size={40} className="text-green-600" />
         </div>
         <h2 className="text-2xl font-bold text-gray-900">John Doe</h2>
-        <p className="text-gray-600">Premium Member</p>
+        <p className="text-gray-600">{t('profile.premiumMember')}</p>
         <div className="flex items-center justify-center mt-2">
           <Star className="text-yellow-500 fill-current" size={16} />
-          <span className="text-sm text-gray-600 ml-1">VIP Status</span>
+          <span className="text-sm text-gray-600 ml-1">{t('profile.vipStatus')}</span>
         </div>
       </div>
 
@@ -942,26 +945,26 @@ export default function HomePage() {
       <div className="grid grid-cols-3 gap-4">
         <div className="text-center p-4 bg-white rounded-lg border border-gray-100">
           <p className="text-2xl font-bold text-green-600">2,850</p>
-          <p className="text-sm text-gray-600">Total Points</p>
+          <p className="text-sm text-gray-600">{t('profile.totalPoints')}</p>
         </div>
         <div className="text-center p-4 bg-white rounded-lg border border-gray-100">
           <p className="text-2xl font-bold text-blue-600">15</p>
-          <p className="text-sm text-gray-600">Bookings</p>
+          <p className="text-sm text-gray-600">{t('profile.bookings')}</p>
         </div>
         <div className="text-center p-4 bg-white rounded-lg border border-gray-100">
           <p className="text-2xl font-bold text-purple-600">3</p>
-          <p className="text-sm text-gray-600">Clubs</p>
+          <p className="text-sm text-gray-600">{t('profile.clubs')}</p>
         </div>
       </div>
 
       {/* Menu Items */}
       <div className="space-y-2">
         {[
-          { icon: User, label: "Edit Profile", color: "gray" },
-          { icon: Bell, label: "Notifications", color: "gray" },
-          { icon: Gift, label: "Rewards History", color: "gray" },
-          { icon: CreditCard, label: "Payment Methods", color: "gray" },
-          { icon: Users, label: "Invite Friends", color: "gray" },
+          { icon: User, label: t('profile.editProfile'), color: "gray" },
+          { icon: Bell, label: t('profile.notifications'), color: "gray" },
+          { icon: Gift, label: t('profile.rewardsHistory'), color: "gray" },
+          { icon: CreditCard, label: t('profile.paymentMethods'), color: "gray" },
+          { icon: Users, label: t('profile.inviteFriends'), color: "gray" },
         ].map((item, index) => (
           <button 
             key={index} 
@@ -1024,7 +1027,7 @@ export default function HomePage() {
             <TabButton
               id="home"
               icon={Home}
-              label="Home"
+              label={t('navigation.home')}
               isActive={activeTab === 'home' && currentPage === 'home'}
               onClick={(id: string) => {
                 setActiveTab(id);
@@ -1034,7 +1037,7 @@ export default function HomePage() {
             <TabButton
               id="wallet"
               icon={CreditCard}
-              label="Wallet"
+              label={t('navigation.wallet')}
               isActive={activeTab === 'wallet' && currentPage === 'home'}
               onClick={(id: string) => {
                 setActiveTab(id);
@@ -1044,7 +1047,7 @@ export default function HomePage() {
             <TabButton
               id="messages"
               icon={MessageCircle}
-              label="Messages"
+              label={t('navigation.messages')}
               isActive={activeTab === 'messages' && currentPage === 'home'}
               onClick={(id: string) => {
                 setActiveTab(id);
@@ -1054,7 +1057,7 @@ export default function HomePage() {
             <TabButton
               id="profile"
               icon={User}
-              label="Profile"
+              label={t('navigation.profile')}
               isActive={activeTab === 'profile' && currentPage === 'home'}
               onClick={(id: string) => {
                 setActiveTab(id);
