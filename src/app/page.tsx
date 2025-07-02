@@ -361,7 +361,10 @@ export default function HomePage() {
 
   const renderSignUpContent = () => (
     <div className="space-y-6 px-2">
-      <div className="text-center mb-8 mt-8">
+      <div className="flex justify-end mb-4 mt-4">
+        <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
+      </div>
+      <div className="text-center mb-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">{t('signup.title')}</h1>
         <p className="text-gray-500 text-sm leading-relaxed px-4">
           {t('signup.subtitle')}
@@ -622,7 +625,7 @@ export default function HomePage() {
           <ArrowLeft size={20} className="text-gray-600" />
         </button>
         <h2 className="text-xl font-bold text-gray-900">{t('shop.title')}</h2>
-        <div className="w-10"></div>
+        <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
       </div>
 
       <div className="space-y-4">
@@ -650,7 +653,7 @@ export default function HomePage() {
           <ArrowLeft size={20} className="text-gray-600" />
         </button>
         <h2 className="text-xl font-bold text-gray-900">{selectedShop?.name}</h2>
-        <div className="w-10"></div>
+        <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
       </div>
 
       {/* Shop Header */}
@@ -692,7 +695,7 @@ export default function HomePage() {
           <ArrowLeft size={20} className="text-gray-600" />
         </button>
         <h2 className="text-xl font-bold text-gray-900">{t('clubs.title')}</h2>
-        <div className="w-10"></div>
+        <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
       </div>
 
       <div className="space-y-4">
@@ -722,7 +725,10 @@ export default function HomePage() {
           >
             <ArrowLeft size={20} className="text-white" />
           </button>
-          <span className="text-sm font-medium">{t('clubs.invited')}</span>
+          <div className="flex items-center space-x-3">
+            <span className="text-sm font-medium">{t('clubs.invited')}</span>
+            <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
+          </div>
         </div>
         
         <div className="flex items-center space-x-4">
@@ -863,6 +869,9 @@ export default function HomePage() {
   const renderWalletContent = () => (
     <div className="space-y-6">
       <div className="text-center">
+        <div className="flex justify-end mb-4">
+          <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
+        </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">{t('wallet.title')}</h2>
         <p className="text-gray-600">{t('wallet.subtitle')}</p>
       </div>
@@ -901,6 +910,9 @@ export default function HomePage() {
   const renderMessagesContent = () => (
     <div className="space-y-6">
       <div className="text-center">
+        <div className="flex justify-end mb-4">
+          <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
+        </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">{t('messages.title')}</h2>
         <p className="text-gray-600">{t('messages.subtitle')}</p>
       </div>
@@ -930,6 +942,9 @@ export default function HomePage() {
     <div className="space-y-6">
       {/* Profile Header */}
       <div className="text-center">
+        <div className="flex justify-end mb-4">
+          <LanguageToggle currentLocale={locale} onLanguageChange={setLocale} />
+        </div>
         <div className="w-24 h-24 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
           <User size={40} className="text-green-600" />
         </div>
